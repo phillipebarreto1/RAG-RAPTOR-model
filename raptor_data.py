@@ -24,7 +24,6 @@ Answer the question based on the above context: {question}
 """
 openai_api_key= os.getenv('openai_api_key')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-os.environ["OPENAI_API_KEY"]= "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"
 
 document= SimpleDirectoryReader(input_files=["/Users/phill/RAG-model/data/stats/nba_data.md"]).load_data()
 
