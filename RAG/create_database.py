@@ -6,6 +6,7 @@ from langchain.vectorstores.chroma import Chroma
 import nltk
 import os
 import shutil
+from llama_index.core import SimpleDirectoryReader
 
 CHROMA_PATH = "chroma"
 DATA_PATH = "data/stats"

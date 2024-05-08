@@ -98,7 +98,7 @@ def save_to_markdown(filename, content):
 
 def main():
     headers = {
-        "X-RapidAPI-Key": "08564dfb67msh82741cd0b6a650dp17b6b5jsn25d43c03ab6d",
+        "X-RapidAPI-Key": "",
         "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com"
     }
     

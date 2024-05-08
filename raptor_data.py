@@ -45,3 +45,21 @@ raptor_pack = RaptorPack(
         SentenceSplitter(chunk_size=1500, chunk_overlap=150)
     ],
 )
+
+retriever = RaptorRetriever(
+    [],
+    embed_model=OpenAIEmbedding(
+        model="text-embedding-3-small"
+    ),
+    llm=OpenAI(model="gpt-3.5-turbo", temperature=.01),  #  used for generating summaries
+    vector_store=vector_store,  #  used for storage
+    similarity_top_k=2,  #  top k for each layer, or overall top-k for collapsed
+    mode="tree_traversal",  #  sets default mode
+)
+
+query_engine = RetrieverQueryEngine.from_args(
+    raptor_pack.retriever, llm=OpenAI(model="gpt-3.5-turbo", temperature=0.1)
+)
+# response = query_engine.query("What was the final score of the last time the Chicago Bulls played against the Los Angeles Lakers?")
+
+# print(str(response))

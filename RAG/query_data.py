@@ -5,6 +5,7 @@ from langchain.vectorstores.chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
+from llama_index.packs.raptor import RaptorPack
 
 CHROMA_PATH = "chroma"
 
@@ -52,7 +53,7 @@ def main():
             model = ChatOpenAI()
             response_text = model.predict(chat_text)
             st.write(f"Bot says: {response_text}")
-            
+
 if __name__ == "__main__":
     st.title("Phillipe's NBA Bet Helper")
     main()

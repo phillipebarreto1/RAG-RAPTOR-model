@@ -25,16 +25,16 @@ retriever = RaptorRetriever(
     embed_model=OpenAIEmbedding(
         model="text-embedding-3-small"
     ),
-    llm=OpenAI(model="gpt-3.5-turbo", temperature=.1),
-    vector_store=vector_store,  # Use the existing vector store without loading new documents
-    similarity_top_k=2,  # Adjust based on your requirements
-    mode="tree_traversal"  # Continue using tree traversal
+    llm=OpenAI(model="gpt-3.5-turbo", temperature=.01),  #  used for generating summaries
+    vector_store=vector_store,  #  used for storage
+    similarity_top_k=2,  #  top k for each layer, or overall top-k for collapsed
+    mode="tree_traversal",  #  sets default mode
+
 )
 
 # Initialize the query engine with the configured retriever
-query_engine = RetrieverQueryEngine(
-    retriever=retriever,
-    llm=OpenAI(model="gpt-3.5-turbo", temperature=0.1)  # Configure the language model for response generation
+query_engine = RetrieverQueryEngine.from_args(
+    raptor_pack.retriever, llm=OpenAI(model="gpt-3.5-turbo", temperature=0.1)
 )
 
 # Streamlit UI for querying
